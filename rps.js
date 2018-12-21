@@ -54,3 +54,39 @@ function playRound(playerSelection, computerSelection) {
     }
 
 }
+
+function game() {
+    let playerPoints,
+        playerSelection,
+        computerPoints,
+        computerSelection,
+        roundResult;
+
+    playerPoints = computerPoints = 0;
+    
+    while(playerPoints < 3 && computerPoints < 3) {
+        playerSelection = window.prompt("type rock, paper or scissors");
+        computerSelection = computerPlay();
+        roundResult =  playRound(playerSelection, computerSelection);
+
+        switch(roundResult) {
+            case WIN:
+                playerPoints++;
+                console.log("You win this round, " + playerSelection + " beats " + computerSelection);
+                break;
+            case TIE:
+                console.log("It's a draw!");
+                break;
+            case LOSE:
+                computerPoints++;
+                console.log("You lose this round, " + computerSelection + " beats " + playerSelection);
+                break;
+            case INPUT_ERROR:
+                console.log("Please enter a valid word: rock, paper, scissors");
+        }
+        console.log("player: " + playerPoints + "       computer: " + computerPoints);
+    }
+
+    playerPoints == 3?console.log("YOU WIN!!"):console.log("YOU LOSE...");
+    
+}
